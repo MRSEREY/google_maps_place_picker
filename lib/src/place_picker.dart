@@ -18,49 +18,49 @@ enum PinState { Preparing, Idle, Dragging }
 enum SearchingState { Idle, Searching }
 
 class PlacePicker extends StatefulWidget {
-  PlacePicker({
-    Key key,
-    @required this.apiKey,
-    this.onPlacePicked,
-    @required this.initialPosition,
-    this.useCurrentLocation,
-    this.desiredLocationAccuracy = LocationAccuracy.high,
-    this.onMapCreated,
-    this.hintText,
-    this.searchingText,
-    // this.searchBarHeight,
-    // this.contentPadding,
-    this.onAutoCompleteFailed,
-    this.onGeocodingSearchFailed,
-    this.proxyBaseUrl,
-    this.httpClient,
-    this.selectedPlaceWidgetBuilder,
-    this.pinBuilder,
-    this.autoCompleteDebounceInMilliseconds = 500,
-    this.cameraMoveDebounceInMilliseconds = 750,
-    this.initialMapType = MapType.normal,
-    this.enableMapTypeButton = true,
-    this.enableMyLocationButton = true,
-    this.myLocationButtonCooldown = 10,
-    this.usePinPointingSearch = true,
-    this.usePlaceDetailSearch = false,
-    this.autocompleteOffset,
-    this.autocompleteRadius,
-    this.autocompleteLanguage,
-    this.autocompleteComponents,
-    this.autocompleteTypes,
-    this.strictbounds,
-    this.region,
-    this.selectInitialPosition = false,
-    this.resizeToAvoidBottomInset = true,
-    this.initialSearchString,
-    this.searchForInitialValue = false,
-    this.forceAndroidLocationManager = false,
-    this.forceSearchOnZoomChanged = false,
-    this.automaticallyImplyAppBarLeading = true,
-    this.autocompleteOnTrailingWhitespace = false,
-    this.hidePlaceDetailsWhenDraggingPin = true
-  }) : super(key: key);
+  PlacePicker(
+      {Key key,
+      @required this.apiKey,
+      this.onPlacePicked,
+      @required this.initialPosition,
+      this.useCurrentLocation,
+      this.desiredLocationAccuracy = LocationAccuracy.high,
+      this.onMapCreated,
+      this.hintText,
+      this.searchingText,
+      // this.searchBarHeight,
+      // this.contentPadding,
+      this.onAutoCompleteFailed,
+      this.onGeocodingSearchFailed,
+      this.proxyBaseUrl,
+      this.httpClient,
+      this.selectedPlaceWidgetBuilder,
+      this.pinBuilder,
+      this.autoCompleteDebounceInMilliseconds = 500,
+      this.cameraMoveDebounceInMilliseconds = 750,
+      this.initialMapType = MapType.normal,
+      this.enableMapTypeButton = true,
+      this.enableMyLocationButton = true,
+      this.myLocationButtonCooldown = 10,
+      this.usePinPointingSearch = true,
+      this.usePlaceDetailSearch = false,
+      this.autocompleteOffset,
+      this.autocompleteRadius,
+      this.autocompleteLanguage,
+      this.autocompleteComponents,
+      this.autocompleteTypes,
+      this.strictbounds,
+      this.region,
+      this.selectInitialPosition = false,
+      this.resizeToAvoidBottomInset = true,
+      this.initialSearchString,
+      this.searchForInitialValue = false,
+      this.forceAndroidLocationManager = false,
+      this.forceSearchOnZoomChanged = false,
+      this.automaticallyImplyAppBarLeading = true,
+      this.autocompleteOnTrailingWhitespace = false,
+      this.hidePlaceDetailsWhenDraggingPin = true})
+      : super(key: key);
 
   final String apiKey;
 
@@ -293,7 +293,9 @@ class _PlacePickerState extends State<PlacePicker> {
     await _moveTo(provider.selectedPlace.geometry.location.lat,
         provider.selectedPlace.geometry.location.lng);
 
-    provider.placeSearchingState = SearchingState.Idle;
+    // provider.placeSearchingState = SearchingState.Idle;
+    Future.delayed(Duration(milliseconds: 500),
+        () => provider.placeSearchingState = SearchingState.Idle);
   }
 
   _moveTo(double latitude, double longitude) async {
